@@ -134,7 +134,11 @@ function App() {
                 sensorData={sensorData}
                 isSubmitting={isSubmitting}
                 setIsSubmitting={setIsSubmitting}
-                onSuccess={handleResetScan}
+                onSuccess={()=>{
+                  setSensorData('');
+                  setHasScanned(false);
+                  setScanning(false);                  
+                }}
               />
             </div>
           </div>

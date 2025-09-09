@@ -56,17 +56,15 @@ const SensorDeployForm = ({ sensorData, isSubmitting, setIsSubmitting, onSuccess
       console.log('Submitting deployment data:', payload);
       
       // Send data to backend API
-      const response = await fetch('/api/deploy-sensor', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
+       const response = await fetch('http://localhost:8000/api/storeSensorData', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
       
       const result = await response.json();
       
-      if (result.success) {
+      if (response.ok) {
         toast.success('Sensor deployed successfully!');
         console.log('Deployment successful:', result);
         
